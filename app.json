@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/appointment/appointment",
+    "pages/index/index",
+    "pages/map/map",
+    "pages/logs/logs",
+    "pages/parkingdetails/parkingdetails",
+   
+    "pages/platelist/platelist",
+    "pages/plateadd/plateadd",
+    "pages/login/login",
+    "pages/pay/pay",
+    "pages/coupon/coupon",
+    "pages/order/order",
+    "pages/share/share",
+    "pages/note/note",
+    "pages/personal/personal"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

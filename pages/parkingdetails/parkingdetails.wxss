@@ -1,0 +1,123 @@
+page{
+   background-color: #f5f5f5;
+}
+.container{
+  background-color: #f5f5f5;
+}
+.swiper-wrap{
+  width: 100%;
+  height: 350rpx;
+}
+.slide-image{
+  display: block;
+  width: 100%;
+  height: 350rpx;
+}
+.parking-info{
+  width: 750rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.parking-left{
+  max-width: 600rpx;
+}
+.parking-nametype{
+  display: flex;
+  align-items: center;
+}
+.parking-name{
+  max-width: 430rpx;
+  font-size:32rpx;
+  color: #333333;
+  text-overflow: ellipsis;
+}
+.parking-type{
+  margin-left: 5rpx;
+  font-size: 22rpx;
+  box-sizing: border-box;
+  padding: 4rpx 8rpx;
+  color: #ffffff;
+  line-height: 22rpx;
+  background-color: #f6bc41;
+  border-radius: 4rpx;
+}
+.parking-position{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.parking-cw{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.paring-right{
+  margin-left: auto;
+  text-align: center;
+}
+.parkingriging-y{
+  display: block;
+  width: 64rpx;
+  height: 64rpx;
+}
+.parkingriging-dh{
+  margin: auto;
+  width: 64rpx;
+  height: 64rpx;
+  box-sizing: border-box;
+  border-radius: 32rpx;
+  border: 2rpx solid #d01c95;
+}
+.parkingriging-dh image{
+   display: block;
+  width: 30rpx;
+  height: 30rpx;
+  margin: 15rpx auto;
+}
+.parkingriging-d{
+  line-height: 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.table-parking-time{
+  margin-top : 19rpx;
+  border-top: 1px solid #e6e6e6;
+  background-color: #fff;
+  padding: 25rpx 30rpx 25rpx;
+  color: #333;
+   font-size: 24rpx; 
+}
+.t-parking-text{
+  font-size: 28rpx;
+}
+.time-info-hearder{
+  margin-top: 43rpx;
+  background-color: #fff3e3;
+  line-height: 49rpx;
+  display:flex;
+  flex-direction: row;
+  margin-bottom: 4rpx;
+  text-align: center;
+}
+.time-ih-l{
+  width: 50%;
+}
+.time-ih-r{
+  flex: 1;
+}
+.time-info-content{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rpx;
+  text-align: center;
+  background-color: #f1f6f8;
+}
+.table-nomore{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 24rpx;
+}

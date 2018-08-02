@@ -1,0 +1,127 @@
+.content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: #e6e6e6;
+}
+.title{
+  padding-top: 35rpx;
+  padding-left: 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.input-wrap{
+  margin-top: 30rpx;
+  width: 750rpx;
+  padding: 20rpx 30rpx 20rpx 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-self: center;
+  background-color: #ffffff;
+}
+.indent{
+  margin-left: 20rpx;
+  width: 72rpx;
+  height: 72rpx;
+  text-align: center;
+  line-height: 70rpx;
+  border: 2rpx solid #666666;
+  font-size: 32rpx;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}
+.plate-wrap{
+  display: flex;
+  padding-left: 25rpx;
+  align-items: center;
+  height: 72rpx;
+  box-sizing: border-box;
+  color: #666666;
+}
+.plate{
+  width: 36rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 32rpx;
+}
+.keyboard-wrap{
+  position: absolute;
+  width: 750rpx;
+  left: 0;
+  bottom: 0;
+}
+.keyboard-title{
+  box-sizing: border-box;
+  width: 750rpx;
+  height: 48rpx;
+  background-color: #ffffff;
+  line-height: 48rpx;
+  padding: 0 30rpx;
+ 
+}
+.hidden-btn{
+  width: 80rpx;
+  height: 48rpx;
+  float: right;
+  text-align: right;
+  font-size: 24rpx;
+  color: #d01c95;
+}
+.keyboard-lists{
+  width: 750rpx;
+  height: 403rpx;
+ 	background-color: #d5d8de;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1rpx solid  #d5d8de;
+  padding-left: 10rpx;
+  padding-bottom: 10rpx;
+}
+.keyboard-item{
+  margin-right: 14rpx;
+  margin-top: 10rpx;
+  width: 60rpx;
+	height: 88rpx;
+  line-height: 88rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 2px 3px 0px 
+		rgba(46, 49, 53, 0.35);
+	border-radius: 10rpx;
+  color: #1a1a1a;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 34rpx;
+}
+.keyboarditem-active{
+  background-color: #d01c95;
+  color: #ffffff;
+}
+.active{
+  color: #1a1a1a;
+}
+.indent-active{
+  color: #d01c95;
+}
+.cursor-show{
+  border-left: 2rpx solid #d01c95;
+}
+.add-car{
+  margin-top: 80rpx;
+  width: 392rpx;
+	height: 80rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 80rpx;
+	background-image: linear-gradient(0deg, 
+		#d01c95 0%, 
+		#800d93 100%);
+	box-shadow: 0px 6rpx 12rpx 0px 
+		rgba(227, 0, 155, 0.6);
+    border-radius: 40rpx;
+}

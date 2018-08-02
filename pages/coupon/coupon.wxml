@@ -1,0 +1,22 @@
+<view>
+  <view class="exchange-style">
+    <input class="input-class" value="{{inputValue}}" bindinput="bindKeyInput" placeholder="请输入优惠券编号" />
+    <view class="code-btn" bindtap='couponExchange'>兑换</view>
+  </view>
+   <view class="no-usercounp" bindtap="unbundleCounp"  wx:if="{{counpItems.lenth != 0 ||counpItems != null }}">不使用优惠券</view> 
+  <view class="counp-content" wx:if="{{counpItems.lenth != 0 ||counpItems != null }}">
+    <view class="counp-list" wx:for="{{counpItems}}" wx:key="*this" bindtap='bindingInfo' data-id="{{item.userCouponId}}" data-amount='{{item.couponLimit}}'>
+       <image src="../../assets/icon/parting_coupon_grain@2x.png" class="img-top"></image> 
+       <view class="counp-info">
+          <view class="left-text">
+             <view class="symbol-text">￥</view>
+             <view class="price-text">{{item.couponLimit}}</view>
+          </view>
+          <view class="counp-time">{{item.fmInvalidDate}}</view>
+       </view>
+    </view>
+  </view>
+  <view class="no-data" wx:if="{{counpItems.lenth == 0 ||counpItems == null }}">
+    <image src="../../assets/icon/img_empty_youhuiquan.png" class="no-data-img"></image>
+  </view>
+</view>

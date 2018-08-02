@@ -1,0 +1,20 @@
+<!--login.wxml-->
+<view class="content">
+  <view class='title'>请输入真实有效的车牌号码</view>
+  <view class='input-wrap'>
+    <view class="indent {{currentIndentIndex===index?'indent-active':''}}" wx:for='{{indentLists}}' data-index='{{index}}' wx:key="{{index}}" bindtap='changeInput'>{{item}}</view>
+
+    <view class="plate-wrap {{currentPlateIndex>0?'active':''}}" bindtap='showKeyboard'>
+      <view class="plate {{cursorFlag&&index===currentPlateIndex?'cursor-show':''}}" wx:for='{{plateLists}}' data-index='{{index}}' wx:key="{{index}}">{{item===null?'':item}}</view>
+    </view>
+  </view>
+  <button class='add-car' loading='{{loading}}' disabled='{{loading}}' bindtap='addCar'>确定</button>
+  <view class='keyboard-wrap' wx:if="{{keyboardShow}}">
+    <view class='keyboard-title'>
+      <view class='hidden-btn'>确认</view>
+    </view>
+    <view class='keyboard-lists'>
+        <button class='keyboard-item' hover-class="keyboarditem-active" wx:for='{{keyboardList}}' wx:key="{{index}}" data-key='{{item}}' disabled="{{item===null||item==='I'||item==='O'||(item==='删'&&isplateFlag===false)}}" bindtap='keyboardTap'>{{item===null?'':item}}</button>
+    </view>
+  </view>
+</view>

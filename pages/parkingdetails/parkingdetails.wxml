@@ -1,0 +1,53 @@
+<!--logs.wxmlhome_parking_bg@2x-->
+<view class="container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper-wrap'  indicator-color='{{indicatorColor}}' indicator-active-color='{{indicatorActiveColor}}'>
+    
+    <block wx:if='{{parkingD.files.length==0}}'>
+      <swiper-item>
+        <image src="/assets/icon/home_parking_bg@2x.png" class="slide-image"/>
+      </swiper-item>
+    </block>
+    <block wx:for="{{parkingD.files}}" wx:key='{{index}}' wx:if='{{parkingD.files.length}}'>
+      <swiper-item>
+        <image src="{{item.path}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='parking-info' >
+    <view class='parking-left'>
+      <view class='parking-nametype'>
+        <view class='parking-name'>{{parkingD.parklotName}}</view>
+        <view class='parking-type'>{{parkingD.parklotKind==0?'室内':(parkingD.parklotKind==1?'室外':'室内+室外')}}</view>
+      </view>
+      <view class='parking-position'>
+        <text>{{parkingD.parklotAddress}}</text>
+      </view>
+      <view class='parking-cw'>
+        <text>总车位数:</text>
+        <text style='margin-left:5rpx;'>{{parkingD.totalAmount}}</text>
+        <text  style='margin-left:10rpx;'>空泊位:</text>
+        <text  style='margin-left:5rpx;color:#d01c95;'>{{parkingD.parklotType!=0?parkingD.reservableAmount:(parkingD.leftAmountType==1?parkingD.leftAmount:"暂无信息")}}</text>
+      </view>
+    </view>
+    <view class='paring-right'>
+      <view class='parkingriging-dh' bindtap='goNa'>
+        <image src='/assets/icon/ic_reserve_location.png'></image>
+      </view>
+      <text class='parkingriging-d'>{{parkingD.distance}}</text>
+    </view>
+  </view>
+  <view class="table-parking-time" wx:if="{{!parkingD.ispark}}">
+    <text class="t-parking-text">车位信息</text>
+    <view class="time-info-hearder">
+      <view class="time-ih-l">车位编号</view>
+      <view class="time-ih-r">可约时间段</view>
+    </view>
+    <view wx:for="{{parkLists}}" wx:key="parklocId">
+      <view class="time-info-content">
+        <view class="time-ih-l">{{item.parklocNumber}}</view>
+        <view class="time-ih-r">{{item.startTime}} — {{item.endTime}}</view>
+      </view>
+    </view>
+    <view class="table-nomore">暂无更多</view>
+  </view>
+</view>

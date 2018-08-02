@@ -1,0 +1,105 @@
+<!--首页地图-->
+<view class="container">
+  <!-- <view class='search-head'>
+    <image src='/assets/icon/home_mine@3x.png' class='person-center' bindtap='goPersonal'></image>
+    <view class='search-park'>
+      <image src='/assets/icon/parking_seach@3x.png' class='search-logo'></image>
+      <text style='margin-left:10rpx;font-size:28rpx;color:#666666;'>请输入停车地址</text>
+    </view>
+    <view class='note-wrap'>
+      <image src='/assets/icon/home_message@3x.png'></image>
+    </view>
+  </view> -->
+  <view class='map-wrap'>
+    <map bindtap='showMap' id="map" style='height:{{mapHieght}}' longitude="{{currentLng}}" latitude="{{currentLat}}" scale='{{mapScale}}' controls='{{controls}}' markers='{{markers}}' polyline='{{polyline}}' bindregionchange='regionchange' bindcontroltap='controltap'
+      bindmarkertap='markertap'>
+      <cover-view class='note' wx:if='{{noteShowFlag}}' catchtap='goOrder'>
+        <cover-view class='note-content'>{{noteMessage}}</cover-view>
+      </cover-view>
+      <cover-view class='card-wrap' style='opacity:{{cardStyle.opacity}};display:{{cardStyle.display}}' wx:if='{{parkingList.length}}'>
+        <cover-image src='/assets/icon/ic_home_up.png' class='card-up' bindtap='showMovewrap'></cover-image>
+        <cover-image src='/assets/icon/home_left.png' class='let-btn' bindtap='changeCard' data-change='prev'></cover-image>
+        <cover-view class='card' bindtap='goParkingDetails'>
+          <cover-view class='card-info'>
+            <cover-view class='park-types'>
+              <cover-view class='parktypes-top'>
+                <cover-view class='park-name'>{{parkingList[currentParkingIndex].name}}</cover-view>
+                <cover-view class='park-type,{{parkingList[currentParkingIndex].type==2?"cz-acitive":""}}' wx:if='{{parkingList[currentParkingIndex].type!=0}}'>
+                  {{parkingList[currentParkingIndex].type==1?'约车场':'约车位'}}
+                </cover-view>
+                <cover-view class='park-distance'>{{parkingList[currentParkingIndex].distance}}</cover-view>
+              </cover-view>
+              <cover-view class='park-position'>
+                <cover-image src='/assets/icon/ic_parking_pos.png' class='position-icon'></cover-image>
+                <cover-view class='positon-text'>{{parkingList[currentParkingIndex].address}}</cover-view>
+              </cover-view>
+            </cover-view>
+            <cover-view class='park-num'>
+              <cover-view class='park-monery' wx:if='{{parkingList[currentParkingIndex].type!=0}}'>
+                <cover-view class='park-fh'>￥</cover-view>
+                <cover-view class='park-fee'>{{parkingList[currentParkingIndex].parking_fee}}</cover-view>
+              </cover-view>
+
+              <cover-view class='park-wz' wx:if='{{parkingList[currentParkingIndex].type==0}}'>{{parkingList[currentParkingIndex].show==0?parkingList[currentParkingIndex].total_amount:parkingList[currentParkingIndex].left_amount}}</cover-view>
+              <cover-view class='park-title'>{{parkingList[currentParkingIndex].type!=0?'首小时':(parkingList[currentParkingIndex].show==1?'空泊位':'总车位')}}</cover-view>
+
+            </cover-view>
+          </cover-view>
+          <cover-view class='card-bottom'>
+            <cover-view class='park-navigation' catchtap='navigation'>
+              <cover-view class='na-bg'></cover-view>
+              <cover-view class='na-text'>到这里去</cover-view>
+            </cover-view>
+            <cover-view class='park-appoint' wx:if='{{parkingList[currentParkingIndex].type!=0}}' catchtap='goAppoint'>立即预约</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-image src='/assets/icon/home_right.png' class='right-btn' bindtap='changeCard' data-change='next'></cover-image>
+      </cover-view>
+    </map>
+    <view class='move-wrap' bindtouchstart='moveWraptouchstart' bindtouchmove='moveWraptouchmove' bindtouchend='moveWraptouchend'>
+      <view class='tab-wrap'>
+        <view class='tab-item,{{tabCurrentIndex==0?"tab-acitive":""}}' data-index='0' bindtap='changeTabIndex'>全部
+          <view class='tab-bottom' wx:if='{{tabCurrentIndex==0}}'></view>
+        </view>
+        <view class='tab-item,{{tabCurrentIndex==1?"tab-acitive":""}}' data-index='1' bindtap='changeTabIndex'>约车场
+          <view class='tab-bottom' wx:if='{{tabCurrentIndex==1}}'></view>
+        </view>
+        <view class='tab-item,{{tabCurrentIndex==2?"tab-acitive":""}}' data-index='2' bindtap='changeTabIndex'>约车位
+          <view class='tab-bottom' wx:if='{{tabCurrentIndex==2}}'></view>
+        </view>
+      </view>
+      <scroll-view class='parking-list' scroll-y='{{scrollFlag}}' upper-threshold="0" bindscroll='changeScroll'>
+        <view class='no-data' wx:if='{{parkingList.length==0}}'>哎呀！什么都没有，拖拽地图试试</view>
+        <view class='parking-item' wx:for='{{parkingList}}' wx:key='{{index}}'>
+          <view class='parkingitem-zz'>
+            <view class='parkingitem-zzleft' catchtap='goAppontNagation' data-index='{{index}}' data-types='details'></view>
+            <view class='parkingitem-zzright' catchtap='goAppontNagation' data-index='{{index}}' data-types='appointna'></view>
+          </view>
+          <view class='parking-left'>
+            <view class='parking-typename'>
+              <view class='parking-name'>{{item.name}}</view>
+              <view class='parking-type,{{item.type==2?"cz-acitive":""}}' wx:if='{{item.type!=0}}'>{{item.type==1?'约车场':'约车位'}}</view>
+            </view>
+            <view class='parking-state'>
+              <view class='prking-czname'>{{item.type!=0?'空泊位:':(item.show==1)?'空泊位:':'总车位:'}}</view>
+              <view class='prking-cznum'>{{item.type!=0?item.reservable_amount:(item.show==0?item.total_amount:item.left_amount)}}</view>
+              <view class='prking-czname parking-l' wx:if='{{item.type!=0}}'>停车费：</view>
+              <view class='prking-cznum' wx:if='{{item.type!=0}}'>￥{{item.parking_fee}}首小时</view>
+            </view>
+            <view class='parking-position'>
+              <image src='/assets/icon/ic_parking_pos.png' class='parkingposition-icon'></image>
+              <text class='paringposition-text'>{{item.address}}</text>
+            </view>
+          </view>
+          <view class='parking-right'>
+            <image src='/assets/icon/ic_yue.png' class='parkingriging-y' wx:if='{{item.type!=0}}'></image>
+            <view class='parkingriging-dh' wx:if='{{item.type==0}}'>
+              <image src='/assets/icon/ic_reserve_location.png'></image>
+            </view>
+            <text class='parkingriging-d'>{{item.distance}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

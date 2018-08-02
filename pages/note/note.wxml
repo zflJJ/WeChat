@@ -1,0 +1,5 @@
+<!--支付成功提示语-->
+<view class="container">
+<image src='/assets/icon/img_pay_succeeded.png' class='pay-success'></image>
+<button class='go-appointment' bindtap='goApponitment'>再次预约</button>
+</view>

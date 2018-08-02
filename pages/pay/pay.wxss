@@ -1,0 +1,95 @@
+page{
+  width: 100%;
+  height: 100%;
+}
+.content{
+  position: relative;
+  width:100%;
+  height: 100%;
+  background-color: #e6e6e6;
+}
+.title{
+  padding-top: 35rpx;
+  padding-left: 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.count-select{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 120rpx;
+  background-color: #ffffff;
+  padding: 30rpx;
+  display: flex;
+  box-sizing: border-box;
+  line-height: 40rpx;
+  align-items: center;
+  border: solid 1rpx #e6e6e6;
+
+}
+.countselect-title{
+  height: 40rpx;
+  font-size: 34rpx;
+  color: #1a1a1a;
+}
+.countselect-monery{
+  margin-left: auto;
+  height: 40rpx;
+  font-size: 30rpx;
+  color: #d01c95;
+}
+.image_select_coupon{
+  margin-left: 10rpx;
+  width: 18rpx;
+  height: 31rpx;
+}
+.wx-pay{
+  margin-top: 20rpx;
+  width: 750rpx;
+	height: 120rpx;
+	background-color: #ffffff;
+	border: solid 1rpx #e6e6e6;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.wx-logo{
+  display: block;
+  width: 84rpx;
+	height: 68rpx;
+}
+.wx-text{
+  margin-left: 30rpx;
+  font-size: 34rpx;
+	color: #1a1a1a;
+}
+.wx-true{
+  margin-left: auto;
+  display: block;
+  width: 51rpx;
+	height: 36rpx;
+}
+.pay-wrap{
+  position: relative;
+  width: 100%;
+  margin-top: 60rpx;
+  height: 80rpx;
+
+}
+.pay{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,0);
+  height: 80rpx;
+  background-image: linear-gradient(to right, #d01c95 0%, #800d93 100%);
+  box-shadow: 0rem 3rpx 6rpx 0rpx rgba(227, 0, 155, 0.6);
+  color: #ffffff;
+  border-radius: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  word-break:keep-all;
+  justify-content: space-around;
+
+}

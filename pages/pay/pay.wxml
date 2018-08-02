@@ -1,0 +1,21 @@
+<!--login.wxml 已经优惠金额{{couponNum}}元-->
+<view class="content">
+  <view class="title">选择优惠券</view>
+  <view class="count-select" bindtap='goCoupon'>
+    <view class="countselect-title">优惠券</view>
+    <view class="countselect-monery">{{hasselectCouponFlag?("已优惠"+couponNum+"元"):(isHascoupon?'有可用优惠券':'无可用优惠券')}}</view>
+    <image class='image_select_coupon' src='/assets/icon/ic_arrow_right.png'></image>
+  </view>
+  <view class="title">选择支付方式</view>
+  <view class="wx-pay">
+    <image  class="wx-logo" src='/assets/icon/ic_wechat.png'></image>
+    <view class="wx-text">微信支付</view>
+    <image class='wx-true'  src='/assets/icon/ic_pay_selected.png'></image>
+  </view>
+  <view class='pay-wrap'>
+    <button class='pay' bindtap='getPay' loading='{{loading}}' disabled='{{loading}}'>
+    <text>确定支付：</text>
+    <text>{{payMonery}}元</text>
+    </button>
+  </view>
+</view>

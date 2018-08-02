@@ -1,0 +1,172 @@
+<!--login.wxml-->
+<view class="content">
+  <view class='parkinginfo-wrap'>
+    <!--头部card开始-->
+    <view class='card-wrap'>
+      <view class="card" wx:if='{{orderContent.parklocNumber!=null}}'>
+        <image src='/assets/icon/card-bg.png' class='card-bg' />
+        <view class='card-content'>
+          <view class='card-title'>
+            车位编号
+            <view class='cardtitle-bottom'></view>
+          </view>
+          <view class='card-num'>{{orderContent.parklocNumber}}</view>
+        </view>
+      </view>
+      <view class='position'>
+        <view class='position-name'>{{orderContent.parklotName}}</view>
+        <view class='position-type'>{{orderContent.parklotKind==0 ? '室内' : (orderContent.parklotKind == 1 ? '室外':'室内+室外')}}</view>
+        <view class='allmonery' wx:if='{{allMonery}}'>￥{{allMonery}}</view>
+      </view>
+      <view class='address'>{{orderContent.address}}</view>
+    </view>
+    <!--头部card结束-->
+    <!--车牌号开始-->
+    <view class='list-wrap'>
+      <view class='list-item'>
+        <view class='item-name'>入场车辆</view>
+        <view class='item-text'>{{orderContent.plateNo}}</view>
+      </view>
+    </view>
+    <!--车牌号结束-->
+    <!--预约倒计时开始-->
+    <view class='list-wrap' wx:if="{{orderContent.state===1301}}">
+      <view class='list-item'>
+        <view class='item-name'>入场时间</view>
+        <view class='item-text count-time'>
+          <view class="time">{{countTime.hour}}</view>
+          <view class="unit">时</view>
+          <view class="time">{{countTime.miute}}</view>
+          <view class="unit">分</view>
+          <view class="time">{{countTime.seconds}}</view>
+        </view>
+      </view>
+    </view>
+    <!--预约倒计时结束-->
+    <!--订单状态开始-->
+    <view class='list-wrap'>
+      <view class='list-item'>
+        <view class='item-name'>订单状态</view>
+        <view class='item-text'>{{orderContent.state===1300?'未支付':(orderContent.state===1301?'已预约':(orderContent.state===1302?'停车中':(orderContent.state===1303?'离场未支付':(orderContent.state===1304?'已完成':'已取消'))))}}</view>
+      </view>
+      <view class='list-item'>
+        <view class='item-name'>订单编号</view>
+        <view class='item-text'>{{orderContent.serialNumber}}</view>
+      </view>
+    </view>
+    <!--订单状态结束-->
+    <view class='title'>预约订单明细</view>
+    <!--预约订单明细开始-->
+    <view class='list-wrap'>
+      <view class='list-item'>
+        <view class='item-name'>预约时间</view>
+        <view class='item-text'>{{apponintmentTime}}</view>
+      </view>
+      <view class='list-item'>
+        <view class='item-name'>预约费</view>
+        <view class='item-text'>￥{{reserveFee}}</view>
+      </view>
+    </view>
+    <!--预约订单明细结束-->
+    <!--预约支付明细开始-->
+    <view class='title' wx:if="{{orderContent.state===1301||orderContent.state===1302||orderContent.state===1303||orderContent.state===1304}}">预约支付明细</view>
+    <view class='list-wrap' wx:if="{{orderContent.state===1301||orderContent.state===1302||orderContent.state===1303||orderContent.state===1304}}">
+      <view class='list-item'>
+        <view class='item-name'>支付方式</view>
+        <view class='item-text'>{{appointMonery}}</view>
+      </view>
+       <view class='list-item' wx:if='{{orderContent.reserveTradeNo!=null}}'>
+        <view class='item-name'>支付流水号</view>
+        <view class='item-text'>{{orderContent.reserveTradeNo}}</view>
+      </view>
+       <view class='list-item' wx:if='{{orderContent.reserveCouponCode!=null}}'>
+        <view class='item-name'>优惠券编号</view>
+        <view class='item-text'>{{orderContent.reserveCouponCode}}</view>
+      </view>
+    </view>
+    <!--预约支付明细结束-->
+    <!--停车订单明细开始-->
+    <view class='title' wx:if="{{orderContent.state===1302||orderContent.state===1303||orderContent.state===1304}}">停车订单明细</view>
+    <view class='list-wrap' wx:if="{{orderContent.state===1302||orderContent.state===1303||orderContent.state===1304}}">
+      <view class='list-item'>
+        <view class='item-name'>入场时间</view>
+        <view class='item-text'>{{enterTime}}</view>
+      </view>
+      <view class='list-item' wx:if="{{orderContent.state===1303||orderContent.state===1304}}">
+        <view class='item-name'>离场时间</view>
+        <view class='item-text'>{{leaveTime}}</view>
+      </view>
+       <view class='list-item' wx:if="{{orderContent.overTime!=null}}">
+        <view class='item-name'>超时时长</view>
+        <view class='item-text'>{{overTime}}</view>
+      </view>
+      <view class='list-item' wx:if="{{orderContent.state===1303||orderContent.state===1304}}">
+        <view class='item-name'>停车费</view>
+        <view class='item-text'>￥{{orderContent.parkingFee == 0 ? '0.00' : orderContent.parkingFee}}</view>
+      </view>
+       <view class='list-item' wx:if="{{orderContent.overTimeFee!=0}}">
+        <view class='item-name'>超时金额</view>
+        <view class='item-text'>￥{{orderContent.overTimeFee == 0 ? '0.00' : orderContent.overTimeFee}}</view>
+      </view>
+    </view>
+    <!--停车支付明细开始-->
+    <view class='title' wx:if="{{orderContent.state===1304}}">停车支付明细</view>
+    <view class='list-wrap' wx:if="{{orderContent.state===1304}}">
+      <view class='list-item'>
+        <view class='item-name'>支付方式</view>
+        <view class='item-text'>{{parkingMonery}}</view>
+      </view>
+      <view class='list-item' wx:if="{{orderContent.parkingTradeNo!=null}}">
+        <view class='item-name'>支付流水号</view>
+        <view class='item-text'>{{orderContent.parkingTradeNo}}</view>
+      </view>
+      <view class='list-item' wx:if="{{orderContent.parkingCouponCode!=null}}">
+        <view class='item-name'>优惠券编号</view>
+        <view class='item-text'>{{orderContent.parkingCouponCode}}</view>
+      </view>
+    </view>
+    <!--停车支付明细结束-->
+    <!--填充物开始-->
+    <view style='width:100%;height:300rpx;'></view>
+    <!--填充物结束-->
+  </view>
+  <!--底部状态按钮开始-->
+  <view class='bottom-wrap' wx:if='{{showBottomFlag}}'>
+    <!--预约未支付-->
+    <view class='appoint' wx:if='{{orderContent.state===1300}}'>
+      <view class='cancle-appiont' bindtap='cancleAppointNopay'>取消预约</view>
+      <view class='go-pay' bindtap='goPay'>立即支付</view>
+    </view>
+    <!--预约已支付-->
+    <view class='appoint' wx:if="{{orderContent.state===1301&&orderContent.chargeType===1}}">
+      <button class='cancle-appiont' bindtap='cancleAppointHaspay'>取消预约</button>
+      <button class='go-pay' bindtap='startendParking' data-command='2'>开始停车</button>
+    </view>
+    <view class='single-appoint' wx:if="{{orderContent.state===1301&&orderContent.chargeType===0}}" bindtap='cancleAppointHaspay'>取消预约</view>
+    <!--停车中-->
+    <view class='single-appoint' wx:if="{{(orderContent.lockType===0||orderContent.lockType===1)&&orderContent.state===1302&&orderContent.chargeType!=1}}" bindtap='showBluetooth'>控制车锁</view>
+    <!--车锁计费结束停车停车中-->
+    <view class='single-appoint' wx:if="{{(orderContent.lockType===0||orderContent.lockType===1)&&orderContent.state===1302&&orderContent.chargeType===1}}" bindtap='showBluetooth' bindtap='startendParking' data-command='1'>结束停车</view>
+    <!--离场未支付-->
+    <view class='single-appoint' wx:if="{{orderContent.state===1303}}" bindtap='goPay'>立即支付</view>
+  </view>
+  <!--底部状态按钮结束-->
+  <!--升降按钮开始-->
+  <view class='control-wrap' wx:if='{{controlFlag}}' catchtouchmove="catchtouchmove">
+    <view class='control-content'>
+      <view class='control-title'>控制车锁</view>
+      <view class='control-btn'>
+        <image class='control-open' bindtap='controlCarlock' data-command='1' src='/assets/icon/ic_lock_control_up.png'></image>
+        <image class='control-close' bindtap='controlCarlock' data-command='2' src='/assets/icon/ic_lock_control_down.png'></image>
+      </view>
+      <view class='controlwrap-close' bindtap='closeBluetooth'>关闭</view>
+    </view>
+  </view>
+  <!--升降按钮结束-->
+  <!--门禁钥匙开始-->
+  <image src='/assets/icon/ic_key.png' class='entrance-guard' bindtap='controlEntrance' wx:if="{{orderContent.accessList.length&&orderContent.state===1302}}"></image>
+  <!--门禁钥匙结束-->
+  <!--分享钥匙开始-->
+  <image src='/assets/icon/parting_mine_order_key.png' class='entrance-guard' bindtap='goShare' wx:if="{{orderContent.state===1301&&orderContent.type==2&&shareFlag}}"></image>
+  <!--分享钥匙结束-->
+</view>

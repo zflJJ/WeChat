@@ -1,0 +1,70 @@
+<view class='content'>
+  <view class="dis">
+    <view class="common-flex">
+      <view class="dis-text">{{responseData.parklotName}}</view>
+      <view class="dis-type">{{responseData.parklotKind ==0?'室内':(responseData.parklotKind == 1?'室外':'室内+室外')}}</view>
+      <view class='dis-locid' wx:if='{{responseData.parklocNumber!=null}}'>{{responseData.parklocNumber}}</view>
+      <view class="dis-number">{{responseData.reservableAmount}}</view>
+    </view>
+    <view class="common-flex dis-2">
+      <image src="../../assets/icon/btn_map@2x.png" class="dis-style"></image>
+      <view class="dis-address">{{responseData.address}}</view>
+      <view class="dis-number-style">空泊位</view>
+    </view>
+  </view>
+  <!--收费规则开始 -->
+  <view class='rule-wrap'>
+    <view class='rule-title'>
+      <image src='/assets/icon/ic_billing_rule.png'></image>
+      <text>收费规则</text>
+    </view>
+    <text class='rule-content'>{{responseData.feeIntro?responseData.feeIntro:"暂无信息"}}</text>
+  </view>
+  <!--收费规则结束 -->
+  <!--车牌号 和 入场时间  -->
+  <!--车牌号 和 入场时间  -->
+  <view class="plate-no common-flex common-jus te-margin" bindtap='addCar'>
+    <view class="plate-cepai">车牌号</view>
+    <view class="common-flex common-right">
+      <view class="plate-number">{{plateNo?plateNo:'去添加'}}</view>
+      <image src="../../assets/icon/wuye_up@2x.png" class="to-select"></image>
+    </view>
+  </view>
+  <!--入场时间的设置  -->
+  <view class="plate-no common-flex common-jus">
+    <view class="plate-cepai">入场时间</view>
+    <view class="common-flex common-right">
+      <picker class="picker-style" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="plate-number">
+          {{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}
+          <!-- 立即入场 -->
+        </view>
+      </picker>
+      <image src="../../assets/icon/wuye_up@2x.png" class="to-select"></image>
+    </view>
+  </view>
+  <!--停止时间  -->
+  <view class="plate-no common-flex common-jus te-margin">
+    <view class="plate-cepai">可停至</view>
+    <view class="common-flex common-right">
+      <view class="plate-number">{{leaveTime}}</view>
+    </view>
+  </view>
+  <!--预约车位  -->
+  <view class="bottom-style">
+    <view class="prices">
+      <view>预约费</view>
+      <view class="price-color">￥</view>
+      <view class="price-size">{{price}}</view>
+    </view>
+    <button class="event-style" bindtap="bookingSpace" loading='{{loading}}' disabled='{{loading}}'>立即预约</button>
+  </view>
+  <!--提示-->
+  <view class='note-lists'>
+  <view class='note-title'>温馨提示</view>
+    <view class='note-item'>1.请按时到预约车位停车。</view>
+    <view class='note-item'>2.预约成功后{{responseData.freeCancellationTime}}分钟内可以免费取消订单。</view>
+    <view class='note-item'>3.超时{{responseData.maxDelayTime}}分钟未进场订单自动取消。</view>
+    <view class='note-item'>4.超过预约时间未离开，超时部分将收取超时费用。</view>
+  </view>
+</view>

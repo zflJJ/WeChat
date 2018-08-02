@@ -1,0 +1,26 @@
+page{
+  background-color: #f5f5f5;
+  position: relative;
+}
+.pay-success{
+  position: absolute;
+  width: 210rpx;
+  height: 300rpx;
+  left: 55%;
+  top: 150rpx;
+  transform: translate(-50%,0);
+}
+.go-appointment{
+  position: absolute;
+  left: 50%;
+  top: 500rpx;
+  transform: translate(-50%,0);
+  width: 180rpx;
+	height: 72rpx;
+	background-color: #d01c95;
+	border-radius: r10px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 72rpx;
+  font-size: 30rpx;
+}

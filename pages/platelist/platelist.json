@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我的车辆",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#e6e6e6",
+    "enablePullDownRefresh":true
+}

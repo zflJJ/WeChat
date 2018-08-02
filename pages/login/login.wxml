@@ -1,0 +1,15 @@
+<!--login.wxml-->
+<view class="content">
+  <view class='input-title'>验证手机号码</view>
+  <view class='input-wrap'>
+    <image src='/assets/icon/fasthome-person.png' class='input-icon' ></image>
+    <input class='input-phone' placeholder='请输入手机号码' maxlength='11' type='number' value='{{phoneNum}}' bindinput='phoneInput'/>
+     <icon type="cancel" size="25" color="#666666" wx:if='{{clearFlag}}' bindtap='clearInput'/>
+  </view>
+  <view class='input-wrap'>
+    <image src='/assets/icon/fasthome-phone.png' class='input-icon'></image>
+    <input class='input-code' placeholder='请输入验证码' maxlength='4'  type='number' value='{{codeNum}}' bindinput='codeInput'/>
+     <button class='code-btn' bindtap='testPhone'>{{isGettingCodes?(countNum+'s'):'获取验证码'}}</button>
+  </view>
+  <button class='login-btn' bindtap='phoneLogin' loading='{{loading}}' disabled='{{loading}}'>下一步</button>
+</view>

@@ -1,0 +1,5 @@
+<!--logs.wxml-->
+<view class="content">
+  <canvas class='canvas-style' canvas-id="firstCanvas"></canvas>
+  <button wx:if="{{authSetting}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+</view>

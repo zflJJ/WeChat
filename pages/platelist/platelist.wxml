@@ -1,0 +1,13 @@
+<!--login.wxml-->
+<view class="content">
+  <view wx:for='{{plateList}}' wx:key='index' class='plate-item' bindtap="processingData" data-plateid="{{item.plateId}}" data-plateno="{{item.number}}" data-index="{{index}}" wx-if="{{plateList.length != 0}}">
+    <view class='plate-num'>{{item.number}}</view>
+    <view class='del-num' data-plateid='{{item.plateId}}' wx:if="{{isEdit == true}}" catchtap='delPlate'>删除</view>
+   </view> 
+  <view class="no-data" wx-if="{{plateList.length === 0}}">
+    <image src="../../assets/icon/img_empty_vehicle.png" class="no-data-img"></image>
+  </view>
+  <view class='control-bottom'>
+    <view class='add-btn' bindtap='addCar'>添加车辆</view>
+  </view>
+</view>

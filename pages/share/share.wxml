@@ -1,0 +1,5 @@
+<!--login.wxml-->
+<view class="content">
+<image src='/assets/icon/share_bg.png' class='share-bg'></image>
+<button class='share-btn' open-type='share'>立即分享</button>
+</view>
